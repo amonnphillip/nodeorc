@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package masterservice;
+
+
+message NullMessage {
+}
+
+message MinionAddress {
+    string address = 1;
+    string port = 2;
+}
+
+message Role {
+    string roleName = 1;
+}
+
+message ServiceMessage {
+    string serviceName = 1;
+    string packageName = 2;
+    string scriptFileName = 3;
+    string scriptContent = 4;
+    string protoFileName = 5;
+    string protoContent = 6;
+}
+
+message MinionServer {
+    string addressAndPort = 1;
+    string role = 2;
+}
+
+service MasterService {
+    rpc GetRole(MinionAddress) returns (Role) {}
+    rpc RegisterMinion(Role) returns (ServiceMessage) {}
+    rpc MinionServerCreated(MinionServer) returns (NullMessage) {}
+}

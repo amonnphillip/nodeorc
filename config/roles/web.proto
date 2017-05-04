@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package webservice;
+
+message SomeMessage {
+    string message = 1;
+}
+
+service WebService {
+    rpc GetMessage(SomeMessage) returns (SomeMessage) {}
+}

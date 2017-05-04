@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package minionservice;
+
+message SomeMessage {
+    string message = 1;
+}
+
+service SomeService {
+    rpc GetMessage(SomeMessage) returns (SomeMessage) {}
+}
